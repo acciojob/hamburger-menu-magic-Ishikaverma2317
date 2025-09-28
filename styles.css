@@ -68,9 +68,21 @@ header {
     border-radius: 5px;
   }
 
-  .nav-sub li {
-    margin-bottom: 10px;
+ .nav-sub {
+  display: flex;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .nav-sub {
+    display: none; /* hidden by default on mobile */
+    flex-direction: column;
   }
+
+  .nav-sub.active {
+    display: flex; /* shown when active */
+  }
+}
 
   .ham {
     display: flex; /* show hamburger on small screens */
