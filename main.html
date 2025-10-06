@@ -3,29 +3,133 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hamburger Menu</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Hamburger Menu Magic</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Navbar style */
+    nav {
+      background: #f4c542;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+
+    nav h1 {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+
+    /* Hamburger icon */
+    .ham {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .ham div {
+      width: 25px;
+      height: 3px;
+      background: black;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+
+    /* Sidebar menu */
+    .menu {
+      position: absolute;
+      top: 60px;
+      left: 10px;
+      width: 150px;
+      background: #55a6f2;
+      padding: 15px;
+      border-radius: 0 0 10px 10px;
+      display: none;
+      flex-direction: column;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: white;
+      padding: 8px 0;
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+      .ham {
+        display: flex;
+      }
+    }
+
+    .show {
+      display: flex;
+    }
+
+    /* Animation for hamburger to X */
+    .ham.change .bar1 {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .ham.change .bar2 {
+      opacity: 0;
+    }
+    .ham.change .bar3 {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <div class="nav-container">
-      <div class="logo">MyLogo</div>
-      <nav>
-        <ul class="nav-sub">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="ham" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </header>
 
-  <script src="script.js"></script>
+  <nav>
+    <h1>Hamburger Navigation</h1>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Blogs</a></li>
+      <li><a href="#">About me</a></li>
+    </ul>
+    <div class="ham" onclick="toggleMenu(this)">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+  </nav>
+
+  <div class="menu" id="sideMenu">
+    <a href="#">Home</a>
+    <a href="#">Blogs</a>
+    <a href="#">About me</a>
+  </div>
+
+  <script>
+    function toggleMenu(x) {
+      x.classList.toggle("change");
+      document.getElementById("sideMenu").classList.toggle("show");
+    }
+  </script>
+
 </body>
 </html>
